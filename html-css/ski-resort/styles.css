@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  color: #463d36;
+  font-size: 28px;
+}
+
+body,
+#status {
+  background-color: #144d75;
+}
+
+main {
+  background-color: #fff;
+  border-radius: 15px;
+  width: 600px;
+  margin: 0 auto;
+  padding: 40px;
+  padding-top: 50px;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 300;
+}
+
+h1,
+hours {
+  margin: 0;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+#banana {
+  width: 500px;
+  font-weight: 300;
+}
+
+#hours {
+  color: #b8285b;
+  font-weight: bold;
+}
+
+#status {
+  color: #fff;
+  width: 380px;
+  font-weight: 600;
+  font-size: 24px;
+  padding: 30px 40px;
+  text-align: center;
+}
