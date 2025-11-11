@@ -1,0 +1,6 @@
+.main {
+  margin: 0 auto;
+  max-width: 900px;
+  border: 1px solid red;
+  padding: 32px;
+}
