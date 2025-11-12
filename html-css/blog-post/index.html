@@ -7,13 +7,16 @@
     <title>Blog Post</title>
   </head>
   <body>
-    <header>
+    <div class="hero">
       <h1>A Blog Post</h1>
-      Typography is one of the most important elements of front end design and
-      development! In this exercise, we'll play around with some of the common
-      CSS properties to manage and style our fonts by making a nice blog
-      post-like web page.
-    </header>
+      <p>
+        Typography is one of the most important elements of front end design and
+        development! In this exercise, we'll play around with some of the common
+        CSS properties to manage and style our fonts by making a nice blog
+        post-like web page.
+      </p>
+      <hr />
+    </div>
     <div class="main">
       <p class="info">12.31.2050 | <span>ALL ABOUT CSS BLOG</span></p>
       <h2>All About Typography</h2>
@@ -129,18 +132,36 @@
         Between <code>em</code> and <code>rem</code>, <code>rem</code> has a
         nice advantage of all elements being relative to one single root font
         value, where nested elements with parent/child font size dependencies
-        can still be hard to manage with em units. When writing responsive
-        styles, <code>rem</code> allows you to simply update the root font size
-        at different screen sizes and all elements using <code>rem</code> units
-        will adjust themselves accordingly creating a super easy-to-manage
-        typography size system.
+        can still be hard to manage with <code>em</code> units. When writing
+        responsive styles, <code>rem</code> allows you to simply update the root
+        font size at different screen sizes and all elements using
+        <code>rem</code> units will adjust themselves accordingly creating a
+        super easy-to-manage typography size system.
       </p>
       <p>
         In small projects you may not have any issues hard coding pixelage, but
         it's always important to understand the drawbacks of writing styles that
         may not be responsive or dynamic.
       </p>
-      Privacy Policy Terms & Conditions About Contact Us More Info
     </div>
+    <footer>
+      <ul>
+        <li>
+          <a href="#privacy">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="#terms">Terms & Conditions</a>
+        </li>
+        <li>
+          <a href="#about">About</a>
+        </li>
+        <li>
+          <a href="#contact">Contact Us</a>
+        </li>
+        <li>
+          <a href="#info">More Info</a>
+        </li>
+      </ul>
+    </footer>
   </body>
 </html>
