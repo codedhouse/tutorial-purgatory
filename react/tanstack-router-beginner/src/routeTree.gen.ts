@@ -9,9 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MixesIndexRouteImport } from './routes/mixes/index'
+import { Route as MixesMixIdRouteImport } from './routes/mixes/$mixId'
 
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -22,35 +30,64 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MixesIndexRoute = MixesIndexRouteImport.update({
+  id: '/mixes/',
+  path: '/mixes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MixesMixIdRoute = MixesMixIdRouteImport.update({
+  id: '/mixes/$mixId',
+  path: '/mixes/$mixId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/login': typeof LoginRoute
+  '/mixes/$mixId': typeof MixesMixIdRoute
+  '/mixes': typeof MixesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/login': typeof LoginRoute
+  '/mixes/$mixId': typeof MixesMixIdRoute
+  '/mixes': typeof MixesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/login': typeof LoginRoute
+  '/mixes/$mixId': typeof MixesMixIdRoute
+  '/mixes/': typeof MixesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths: '/' | '/about' | '/login' | '/mixes/$mixId' | '/mixes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/about' | '/login' | '/mixes/$mixId' | '/mixes'
+  id: '__root__' | '/' | '/about' | '/login' | '/mixes/$mixId' | '/mixes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  LoginRoute: typeof LoginRoute
+  MixesMixIdRoute: typeof MixesMixIdRoute
+  MixesIndexRoute: typeof MixesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -65,12 +102,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mixes/': {
+      id: '/mixes/'
+      path: '/mixes'
+      fullPath: '/mixes'
+      preLoaderRoute: typeof MixesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mixes/$mixId': {
+      id: '/mixes/$mixId'
+      path: '/mixes/$mixId'
+      fullPath: '/mixes/$mixId'
+      preLoaderRoute: typeof MixesMixIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  LoginRoute: LoginRoute,
+  MixesMixIdRoute: MixesMixIdRoute,
+  MixesIndexRoute: MixesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
